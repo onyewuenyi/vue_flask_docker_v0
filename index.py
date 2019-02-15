@@ -5,6 +5,7 @@ from flask import jsonify, request, make_response, send_from_directory
 
 # ENV var: PORT and ENV defined in the docker-compose.yml
 # get the dirname of this file == pwd
+
 ROOT_PATH = os.path.dirname(os.path.realpath(__file__))
 
 # py 2 set env var, but not needed

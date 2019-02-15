@@ -10,6 +10,44 @@ services:
    - ENV=development
    - PORT=4000
    - DB=mongodb://mongodb:27017/vue_flask_docker_v0
+ mongodb:
+  image: mongo:latest
+  container_name: "mongodb"
+  environment:
+   - MONGO_DATA_DIR=/usr/data/db
+   - MONGO_LOG_DIR=/dev/null
+  volumes:
+   - ./data/db:/usr/data/db
+  ports:
+   - 27017:27017
+  command: mongod --smallfiles --logpath=/dev/null # --quiet
 networks:
  default:
   name: web_dev
+
+# version: '3.5'
+# services:
+#  web_dev:
+#   build: .
+#   ports:
+#    - "4000:4000"
+#   volumes:
+#    - .:/app
+#   environment:
+#    - ENV=development
+#    - PORT=4000
+#    - DB=mongodb://mongodb:27017/vue_flask_docker_v0
+#  mongodb:
+#   image: mongo:latest
+#   container_name: "mongodb"
+#   environment:
+#     - MONGO_DATA_DIR=/Users/charlesonyewuenyi/Projects/data/db
+#     - MONGO_LOG_DIR=/dev/null
+#   volumes:
+#     - ./data/db:/Users/charlesonyewuenyi/Projects/data/db
+#   ports:
+#     - 27017:27017
+#   command: mongodb --smallfiles --logpath=/dev/null # --quite
+# networks:
+#  default:
+#   name: web_dev
